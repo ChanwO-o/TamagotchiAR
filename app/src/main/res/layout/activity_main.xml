@@ -6,51 +6,25 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
-	<androidx.constraintlayout.widget.ConstraintLayout
+
+	<fragment
+		android:id="@+id/ux_fragment"
+		android:name="com.google.ar.sceneform.ux.ArFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".MainActivity">
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
 
-		<fragment
-			android:id="@+id/ux_fragment"
-			android:name="com.google.ar.sceneform.ux.ArFragment"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+	<fragment
+		android:id="@+id/main_buttons_fragment"
+		android:name="com.parkchanwoo.tamagotchiar.MainButtonsFragment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/ux_fragment"
+		app:layout_constraintVertical_bias="0.95"
+		tools:layout_editor_absoluteX="0dp" />
 
-		<Button
-			android:id="@+id/Feed_Button"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Feed"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="@+id/ux_fragment"
-			app:layout_constraintVertical_bias="0.90" />
 
-		<Button
-			android:id="@+id/Play_Button"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Play"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toStartOf="@+id/Feed_Button"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintVertical_bias="0.90" />
-
-		<Button
-			android:id="@+id/Bathroom_Button"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Bathroom"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@+id/Feed_Button"
-			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintVertical_bias="0.90" />
-
-	</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
