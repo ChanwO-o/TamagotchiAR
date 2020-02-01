@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.ar.sceneform.plugin'
 
 android {
 	compileSdkVersion 29
@@ -34,3 +35,9 @@ dependencies {
 	// Provides ArFragment, and other UX resources.
 	implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.14.0'
 }
+
+
+sceneform.asset('sampledata/android_logo.fbx',  //The “Source Asset Path” you specified during import
+		'default',                              //The “Material Path” you specified during import
+		'sampledata/android_logo.sfa',          //The “.sfa Output Path” you specified during import
+		'src/main/res/raw/android_logo')        //The “.sfb Output Path” you specified during import
