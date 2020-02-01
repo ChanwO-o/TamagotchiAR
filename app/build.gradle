@@ -35,6 +35,12 @@ dependencies {
 
 	// Provides ArFragment, and other UX resources.
 	implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.14.0'
+
+	def lifecycle_version = "2.2.0"
+	// ViewModel
+	implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+	// LiveData
+	implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
 }
 
 
