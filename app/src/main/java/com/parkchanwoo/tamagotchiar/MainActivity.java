@@ -17,7 +17,7 @@ import com.google.ar.sceneform.ux.TransformableNode;
 public class MainActivity extends AppCompatActivity {
 	private String TAG = this.getClass().getSimpleName();
 
-	private ArFragment arFragment;
+	private TamagotchiARFragment tamagotchiARFragment;
 	private ModelRenderable androidRenderable;
 
 	@Override
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ar_fragment); //Find the fragment, using fragment manager
+		tamagotchiARFragment = (TamagotchiARFragment) getSupportFragmentManager().findFragmentById(R.id.tamagotchi_ar_fragment); //Find the fragment, using fragment manager
 
 		//Build the ModelRenderable
 		ModelRenderable.builder()
@@ -39,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
 						});
 
 		//Listen for onTap events
-		arFragment.setOnTapArPlaneListener(
+		tamagotchiARFragment.setOnTapArPlaneListener(
 				(HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 					if (androidRenderable == null)
 						return;
 					Anchor anchor = hitResult.createAnchor();
 					AnchorNode anchorNode = new AnchorNode(anchor); //Build a node of type AnchorNode
-					anchorNode.setParent(arFragment.getArSceneView().getScene()); //Connect the AnchorNode to the Scene
-					TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem()); //Build a node of type TransformableNode
+					anchorNode.setParent(tamagotchiARFragment.getArSceneView().getScene()); //Connect the AnchorNode to the Scene
+					TransformableNode transformableNode = new TransformableNode(tamagotchiARFragment.getTransformationSystem()); //Build a node of type TransformableNode
 					transformableNode.setParent(anchorNode); //Connect the TransformableNode to the AnchorNode
 					transformableNode.setRenderable(androidRenderable); //Attach the Renderable
 					transformableNode.select(); //Set the node
