@@ -1,6 +1,7 @@
 package com.parkchanwoo.tamagotchiar.viewmodels;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -14,5 +15,11 @@ public class MainActivityViewModel extends AndroidViewModel {
 	public MainActivityViewModel(@NonNull Application application) {
 		super(application);
 		fileRepository = new FileRepository(application);
+	}
+
+	@Override
+	protected void onCleared() {
+		super.onCleared();
+		Log.i(TAG, "MainActivityViewModel destroyed");
 	}
 }
