@@ -1,4 +1,5 @@
 package com.parkchanwoo.tamagotchiar;
+import java.io.Serializable;
 import java.util.*;
 /*
 GOALS:
@@ -9,7 +10,7 @@ GOALS:
 
 
 
-public class Pet
+public class Pet implements Serializable
 {
 
 	private String name;
