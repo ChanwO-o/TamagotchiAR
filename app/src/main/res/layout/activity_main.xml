@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
 
-	<fragment
-		android:id="@+id/start_fragment"
-		android:name="com.parkchanwoo.tamagotchiar.fragments.StartFragment"
+	<FrameLayout
+		android:id="@+id/flMainFragments"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		android:layout_height="match_parent">
 
-<!--	<fragment-->
-<!--		android:id="@+id/tamagotchi_ar_fragment"-->
-<!--		android:name="com.parkchanwoo.tamagotchiar.fragments.TamagotchiARFragment"-->
-<!--		android:layout_width="match_parent"-->
-<!--		android:layout_height="match_parent"-->
-<!--		app:layout_constraintEnd_toEndOf="parent"-->
-<!--		app:layout_constraintStart_toStartOf="parent"-->
-<!--		app:layout_constraintTop_toTopOf="parent" />-->
+		<fragment
+			android:id="@+id/start_fragment"
+			android:name="com.parkchanwoo.tamagotchiar.fragments.StartFragment"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+	</FrameLayout>
 
-<!--	<fragment-->
-<!--		android:id="@+id/main_buttons_fragment"-->
-<!--		android:name="com.parkchanwoo.tamagotchiar.fragments.MainButtonsFragment"-->
-<!--		android:layout_width="match_parent"-->
-<!--		android:layout_height="wrap_content"-->
-<!--		app:layout_constraintBottom_toBottomOf="parent"-->
-<!--		app:layout_constraintTop_toTopOf="@+id/tamagotchi_ar_fragment"-->
-<!--		app:layout_constraintVertical_bias="0.95"-->
-<!--		tools:layout_editor_absoluteX="0dp" />-->
+	<!--	<fragment-->
+	<!--		android:id="@+id/tamagotchi_ar_fragment"-->
+	<!--		android:name="com.parkchanwoo.tamagotchiar.fragments.TamagotchiARFragment"-->
+	<!--		android:layout_width="match_parent"-->
+	<!--		android:layout_height="match_parent"-->
+	<!--		app:layout_constraintEnd_toEndOf="parent"-->
+	<!--		app:layout_constraintStart_toStartOf="parent"-->
+	<!--		app:layout_constraintTop_toTopOf="parent" />-->
+
+	<!--	<fragment-->
+	<!--		android:id="@+id/main_buttons_fragment"-->
+	<!--		android:name="com.parkchanwoo.tamagotchiar.fragments.MainButtonsFragment"-->
+	<!--		android:layout_width="match_parent"-->
+	<!--		android:layout_height="wrap_content"-->
+	<!--		app:layout_constraintBottom_toBottomOf="parent"-->
+	<!--		app:layout_constraintTop_toTopOf="@+id/tamagotchi_ar_fragment"-->
+	<!--		app:layout_constraintVertical_bias="0.95"-->
+	<!--		tools:layout_editor_absoluteX="0dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
