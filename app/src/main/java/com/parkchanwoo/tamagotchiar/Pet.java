@@ -74,4 +74,8 @@ public class Pet implements Serializable
 		this.bathroom = bathroom;
 	}
 
+	@Override
+	public String toString() {
+		return "Name: " + name + " birthday: " + birthday + " gender: " + gender + " happiness: " + happiness + " hunger: " + hunger + " bathroom: " + bathroom;
+	}
 }
