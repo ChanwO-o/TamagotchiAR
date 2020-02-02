@@ -51,3 +51,8 @@ sceneform.asset('sampledata/android_logo.fbx',  //The “Source Asset Path” yo
 		'default',                              //The “Material Path” you specified during import
 		'sampledata/android_logo.sfa',          //The “.sfa Output Path” you specified during import
 		'src/main/res/raw/android_logo')        //The “.sfb Output Path” you specified during import
+
+sceneform.asset('sampledata/dog1.obj',
+        'default',
+        'sampledata/dog1.sfa',
+        'src/main/res/raw/dog1')
