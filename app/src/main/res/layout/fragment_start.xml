@@ -12,7 +12,7 @@
 		android:layout_height="0dp"
 		android:layout_marginTop="150dp"
 		android:layout_marginBottom="32dp"
-		app:layout_constraintBottom_toTopOf="@+id/bStart"
+		app:layout_constraintBottom_toTopOf="@+id/ibStart"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="1.0"
 		app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
 		app:srcCompat="@drawable/tamagotchi_logo" />
 
 	<ImageButton
-		android:id="@+id/bStart"
+		android:id="@+id/ibStart"
 		style="@style/Widget.AppCompat.ImageButton"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
