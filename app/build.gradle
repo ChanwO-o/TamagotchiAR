@@ -44,6 +44,9 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
 	// LiveData
 	implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+
+	// Dynamic toasts
+	implementation 'com.pranavpandey.android:dynamic-toasts:3.0.1'
 }
 
 
