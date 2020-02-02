@@ -4,7 +4,7 @@ import android.os.SystemClock;
 import android.util.Log;
 
 
-public class Manager {
+public class PetManager {
 	private Handler handler;
 	private double currentTime = 0; //TODO Eventually have time/day pull from a file instead of 0
 	private int day = 0;
@@ -13,7 +13,7 @@ public class Manager {
 	private int happiness_loop_tracker = 0;
 	private Pet pet;
 
-	public Manager(/*TODO put file as parameter eventually*/){
+	public PetManager(/*TODO put file as parameter eventually*/){
 		handler = new Handler();
 		pet = new Pet("",null,""); //TODO Eventually want to pull this data from file [PLACEHOLDER]
 
