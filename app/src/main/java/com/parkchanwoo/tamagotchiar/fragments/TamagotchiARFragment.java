@@ -16,6 +16,7 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 import com.parkchanwoo.tamagotchiar.R;
+import com.parkchanwoo.tamagotchiar.RenderableFactory;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
 
 public class TamagotchiARFragment extends ArFragment {
@@ -36,10 +37,9 @@ public class TamagotchiARFragment extends ArFragment {
 		mainActivityViewModel = ViewModelProviders.of(getActivity()).get(MainActivityViewModel.class);
 		Log.i(TAG, "onActivityCreated()");
 
-		//Build the ModelRenderable
-		ModelRenderable.builder()
-				.setSource(getContext(), R.raw.dog1)
-				.build()
+		RenderableFactory factory = new RenderableFactory();
+
+		factory.buildRenderable(getContext(), R.raw.dog1)
 				.thenAccept(renderable -> petRenderable = renderable)
 				.exceptionally(
 						throwable -> {
@@ -47,9 +47,7 @@ public class TamagotchiARFragment extends ArFragment {
 							return null;
 						});
 
-		ModelRenderable.builder()
-				.setSource(getContext(), R.raw.confetti)
-				.build()
+		factory.buildRenderable(getContext(), R.raw.confetti)
 				.thenAccept(renderable -> confettiRenderable = renderable)
 				.exceptionally(
 						throwable -> {
