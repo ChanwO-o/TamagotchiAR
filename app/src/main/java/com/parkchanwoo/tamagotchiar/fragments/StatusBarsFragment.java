@@ -1,11 +1,10 @@
 package com.parkchanwoo.tamagotchiar.fragments;
 
-import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -19,8 +18,6 @@ import com.parkchanwoo.tamagotchiar.Pet;
 import com.parkchanwoo.tamagotchiar.R;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
 import com.pranavpandey.android.dynamic.toasts.DynamicToast;
-
-import static android.content.Context.ACTIVITY_SERVICE;
 
 public class StatusBarsFragment extends Fragment {
 	private String TAG = this.getClass().getSimpleName();
@@ -58,10 +55,22 @@ public class StatusBarsFragment extends Fragment {
 
 			if (pet.getHunger() == 0 && pet.getHappiness() == 0 && pet.getBathroom() == 0) {
 				DynamicToast.makeError(getContext(), "Your pet has died!", Toast.LENGTH_LONG).show();
-				((ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
-				getActivity().finish();
+//				((ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+				buildGameOverDialog();
 			}
-
 		});
+	}
+
+	private void buildGameOverDialog() {
+		AlertDialog.Builder dialogNewPet = new AlertDialog.Builder(getContext());
+		dialogNewPet.setTitle("Game Over");
+		dialogNewPet.setCancelable(false);
+		LayoutInflater inflater = this.getLayoutInflater();
+		View dialogLayout = inflater.inflate(R.layout.layout_gameover, null);
+		dialogNewPet.setView(dialogLayout);
+		dialogNewPet.setPositiveButton("Done", (dialog, which) -> {
+			getActivity().finish();
+		});
+		dialogNewPet.show();
 	}
 }
