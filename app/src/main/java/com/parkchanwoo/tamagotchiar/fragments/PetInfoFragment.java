@@ -43,7 +43,10 @@ public class PetInfoFragment extends Fragment {
 		rbPetInfoFemale = v.findViewById(R.id.rbPetInfoFemale);
 		bPetInfoCreatePet = v.findViewById(R.id.bPetInfoCreatePet);
 		bPetInfoCreatePet.setOnClickListener(view -> {
-			createPet();
+			if (etPetInfoName.getText().toString().isEmpty())
+				etPetInfoName.setError("Required");
+			else
+				createPet();
 
 		});
 		return v;
