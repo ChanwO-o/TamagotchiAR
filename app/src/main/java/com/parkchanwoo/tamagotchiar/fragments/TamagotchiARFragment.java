@@ -1,4 +1,4 @@
-package com.parkchanwoo.tamagotchiar;
+package com.parkchanwoo.tamagotchiar.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +14,7 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
+import com.parkchanwoo.tamagotchiar.R;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
 
 public class TamagotchiARFragment extends ArFragment {

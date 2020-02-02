@@ -9,7 +9,7 @@
 
 	<fragment
 		android:id="@+id/tamagotchi_ar_fragment"
-		android:name="com.parkchanwoo.tamagotchiar.TamagotchiARFragment"
+		android:name="com.parkchanwoo.tamagotchiar.fragments.TamagotchiARFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,7 @@
 
 	<fragment
 		android:id="@+id/main_buttons_fragment"
-		android:name="com.parkchanwoo.tamagotchiar.MainButtonsFragment"
+		android:name="com.parkchanwoo.tamagotchiar.fragments.MainButtonsFragment"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintBottom_toBottomOf="parent"

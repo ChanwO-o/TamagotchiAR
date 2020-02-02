@@ -1,4 +1,4 @@
-package com.parkchanwoo.tamagotchiar;
+package com.parkchanwoo.tamagotchiar.fragments;
 
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parkchanwoo.tamagotchiar.R;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
 
 public class MainButtonsFragment extends Fragment {
