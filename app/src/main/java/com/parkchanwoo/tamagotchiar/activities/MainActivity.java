@@ -31,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+		petManager = new PetManager(mainActivityViewModel.getPetMutableLiveData());
+
+		if (mainActivityViewModel.getPetLiveData().getValue() == null) { // no saved pet
+			buildNewPetDialog();
+		}
+		else {
+			petManager.startTimer();
+		}
 
 		ImageView feedButton = findViewById(R.id.Feed_ImageView);
 		ImageView playButton = findViewById(R.id.Play_ImageView);
@@ -62,16 +71,12 @@ public class MainActivity extends AppCompatActivity {
 				pet.setBathroom(pet.getBathroom() + 7);
 			mainActivityViewModel.setPetLiveData(pet);
 		});
+	}
 
-		mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
-		if (mainActivityViewModel.getPetLiveData().getValue() == null) { // no saved pet
-			buildNewPetDialog();
-		}
-		else {
-			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
-			Log.d("MainActivity", pet.toString());
-			new PetManager(mainActivityViewModel.getPetMutableLiveData()).startTimer();
-		}
+	@Override
+	protected void onPause() {
+		super.onPause();
+		petManager.stopTimer();
 	}
 
 	private void buildNewPetDialog() {
@@ -79,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 		dialogNewPet.setTitle("New Pet information");
 		dialogNewPet.setCancelable(false);
 		LayoutInflater inflater = this.getLayoutInflater();
-		View dialogLayout = inflater.inflate(R.layout.fragment_petinfo, null);
+		View dialogLayout = inflater.inflate(R.layout.layout_petinfo, null);
 		dialogNewPet.setView(dialogLayout);
 		EditText etName = dialogLayout.findViewById(R.id.etPetInfoName);
 		DatePicker dpDOB = dialogLayout.findViewById(R.id.dpPetInfoDOB);
@@ -94,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 				gender = "Female";
 			Pet pet = new Pet(name, dob, gender);
 			mainActivityViewModel.setPetLiveData(pet);
+			petManager.startTimer();
 		});
 		dialogNewPet.show();
 	}
