@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
 import com.parkchanwoo.tamagotchiar.Pet;
+import com.parkchanwoo.tamagotchiar.PetManager;
 import com.parkchanwoo.tamagotchiar.R;
 import com.parkchanwoo.tamagotchiar.fragments.StatusBarsFragment;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
@@ -65,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 			buildNewPetDialog();
 		}
 		else {
-			Log.d("MainActivity", "yes live data");
 			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
 			Log.d("MainActivity", pet.toString());
+			new PetManager(mainActivityViewModel.getPetMutableLiveData()).startTimer();
 		}
 	}
 

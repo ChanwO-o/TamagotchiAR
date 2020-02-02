@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.parkchanwoo.tamagotchiar.Pet;
 import com.parkchanwoo.tamagotchiar.repositories.FileRepository;
@@ -27,6 +28,10 @@ public class MainActivityViewModel extends AndroidViewModel {
 
 	public LiveData<Pet> getPetLiveData() {
 		return fileRepository.getPetLiveData();
+	}
+
+	public MutableLiveData<Pet> getPetMutableLiveData() {
+		return fileRepository.getPetMutableLiveData();
 	}
 
 	public void setPetLiveData(Pet pet) {
