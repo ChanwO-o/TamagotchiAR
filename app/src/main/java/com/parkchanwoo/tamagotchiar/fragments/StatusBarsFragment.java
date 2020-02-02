@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -43,7 +44,8 @@ public class StatusBarsFragment extends Fragment {
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		mainActivityViewModel = ViewModelProviders.of(getActivity()).get(MainActivityViewModel.class);
-		LiveData<Pet> petLiveData = mainActivityViewModel.getPetLiveData();
+//		LiveData<Pet> petLiveData = mainActivityViewModel.getPetLiveData();
+		MutableLiveData<Pet> petLiveData = mainActivityViewModel.getPetMutableLiveData();
 		petLiveData.observe(getViewLifecycleOwner(), pet -> {
 			hungerBar.setProgress(pet.getHunger());
 			happinessBar.setProgress(pet.getHappiness());

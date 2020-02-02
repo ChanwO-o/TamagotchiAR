@@ -3,6 +3,9 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 
 public class PetManager {
 	private Handler handler;
@@ -11,11 +14,11 @@ public class PetManager {
 	private int hunger_loop_tracker = 0;
 	private int bathroom_loop_tracker = 0;
 	private int happiness_loop_tracker = 0;
-	private Pet pet;
+	private MutableLiveData<Pet> petLiveData;
 
-	public PetManager(/*TODO put file as parameter eventually*/){
+	public PetManager(MutableLiveData<Pet> petLiveData){
 		handler = new Handler();
-		pet = new Pet("",null,""); //TODO Eventually want to pull this data from file [PLACEHOLDER]
+		this.petLiveData = petLiveData;
 
 	}
 
@@ -40,7 +43,7 @@ public class PetManager {
 		@Override
 		public void run() {
 			currentTime += .0155;
-			//Log.d("test", String.valueOf(currentTime));
+			Log.d("test", String.valueOf(currentTime));
 			handler.postDelayed(this, 0);
 
 			if(currentTime >= 12000){
@@ -50,22 +53,26 @@ public class PetManager {
 
 			if(bathroom_loop_tracker == 390)
 			{
+				Pet pet = petLiveData.getValue();
 				pet.setBathroom(pet.getBathroom()-1);
 				bathroom_loop_tracker = 0;
-
+				petLiveData.setValue(pet);
 			}
 
 			if(hunger_loop_tracker == 780)
 			{
+				Pet pet = petLiveData.getValue();
 				pet.setHunger((pet.getHunger()-1));
 				hunger_loop_tracker = 0;
-
+				petLiveData.setValue(pet);
 			}
 
 			if(happiness_loop_tracker == 1560)
 			{
+				Pet pet = petLiveData.getValue();
 				pet.setHappiness((pet.getHappiness()-1));
 				happiness_loop_tracker = 0;
+				petLiveData.setValue(pet);
 			}
 
 			//Loop trackers
