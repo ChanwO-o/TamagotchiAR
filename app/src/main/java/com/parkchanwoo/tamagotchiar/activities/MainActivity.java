@@ -69,8 +69,15 @@ public class MainActivity extends AppCompatActivity {
 		else {
 			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
 			Log.d("MainActivity", pet.toString());
-			new PetManager(mainActivityViewModel.getPetMutableLiveData()).startTimer();
+			petManager = new PetManager(mainActivityViewModel.getPetMutableLiveData());
+			petManager.startTimer();
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		petManager.stopTimer();
 	}
 
 	private void buildNewPetDialog() {
