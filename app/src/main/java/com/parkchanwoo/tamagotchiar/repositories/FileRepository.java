@@ -36,6 +36,10 @@ public class FileRepository {
 		return petLiveData;
 	}
 
+	public void setPetLiveData(Pet pet) {
+		petLiveData.setValue(pet);
+	}
+
 	public MutableLiveData<Pet> parsePet() {
 		String name = "";
 		String dob = "";

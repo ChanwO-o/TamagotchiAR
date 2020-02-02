@@ -28,4 +28,8 @@ public class MainActivityViewModel extends AndroidViewModel {
 	public LiveData<Pet> getPetLiveData() {
 		return fileRepository.getPetLiveData();
 	}
+
+	public void setPetLiveData(Pet pet) {
+		fileRepository.setPetLiveData(pet);
+	}
 }
