@@ -11,13 +11,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
 import com.parkchanwoo.tamagotchiar.Pet;
 import com.parkchanwoo.tamagotchiar.PetManager;
 import com.parkchanwoo.tamagotchiar.R;
-import com.parkchanwoo.tamagotchiar.fragments.StatusBarsFragment;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
 
 import java.util.Date;
@@ -25,6 +23,8 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 	private String TAG = this.getClass().getSimpleName();
 	private MainActivityViewModel mainActivityViewModel;
+
+	private PetManager petManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +35,32 @@ public class MainActivity extends AppCompatActivity {
 		ImageView feedButton = findViewById(R.id.Feed_ImageView);
 		ImageView playButton = findViewById(R.id.Play_ImageView);
 		ImageView bathroomButton = findViewById(R.id.Bathroom_ImageView);
-		ProgressBar hungerBar = findViewById(R.id.HungerBar_ProgBar);
-		ProgressBar happinessBar = findViewById(R.id.HappinessBar_ProgBar);
-		ProgressBar bathroomBar = findViewById(R.id.BathroomBar_ProgBar);
 
-
-		feedButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				hungerBar.setProgress(hungerBar.getProgress() + 15);
-			}
+		feedButton.setOnClickListener(v -> {
+			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
+			if (pet.getHunger() + 15 > 100)
+				pet.setHunger(100);
+			else
+				pet.setHunger(pet.getHunger() + 15);
+			mainActivityViewModel.setPetLiveData(pet);
 		});
 
-		playButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				happinessBar.setProgress(happinessBar.getProgress() + 15);
-			}
+		playButton.setOnClickListener(v -> {
+			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
+			if (pet.getHappiness() + 7 > 100)
+				pet.setHappiness(100);
+			else
+				pet.setHappiness(pet.getHappiness() + 7);
+			mainActivityViewModel.setPetLiveData(pet);
 		});
 
-		bathroomButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				bathroomBar.setProgress(bathroomBar.getProgress() + 15);
-			}
+		bathroomButton.setOnClickListener(v -> {
+			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
+			if (pet.getBathroom() + 7 > 100)
+				pet.setBathroom(100);
+			else
+				pet.setBathroom(pet.getBathroom() + 7);
+			mainActivityViewModel.setPetLiveData(pet);
 		});
 
 		mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);

@@ -1,4 +1,5 @@
 package com.parkchanwoo.tamagotchiar;
+
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
@@ -16,7 +17,7 @@ public class PetManager {
 	private int happiness_loop_tracker = 0;
 	private MutableLiveData<Pet> petLiveData;
 
-	public PetManager(MutableLiveData<Pet> petLiveData){
+	public PetManager(MutableLiveData<Pet> petLiveData) {
 		handler = new Handler();
 		this.petLiveData = petLiveData;
 
@@ -30,11 +31,11 @@ public class PetManager {
 		return day;
 	}
 
-	public void startTimer(){
+	public void startTimer() {
 		handler.postDelayed(updateTimer, 0);
 	}
 
-	public void stopTimer(){ //Currently not in use
+	public void stopTimer() { //Currently not in use
 		handler.removeCallbacks(updateTimer);
 	}
 
@@ -46,33 +47,36 @@ public class PetManager {
 			Log.d("test", String.valueOf(currentTime));
 			handler.postDelayed(this, 0);
 
-			if(currentTime >= 120000){
+			if (currentTime >= 120000) {
 				currentTime = 0.0;
 				day += 1;
 			}
 
-			if(bathroom_loop_tracker == 8000)
-			{
+			if (bathroom_loop_tracker == 8000) {
 				Pet pet = petLiveData.getValue();
-				pet.setBathroom(pet.getBathroom()-1);
+				if (pet.getBathroom() > 0) {
+					pet.setBathroom(pet.getBathroom() - 1);
+					petLiveData.setValue(pet);
+				}
 				bathroom_loop_tracker = 0;
-				petLiveData.setValue(pet);
 			}
 
-			if(hunger_loop_tracker == 13000)
-			{
+			if (hunger_loop_tracker == 13000) {
 				Pet pet = petLiveData.getValue();
-				pet.setHunger((pet.getHunger()-1));
+				if (pet.getHunger() > 0) {
+					pet.setHunger((pet.getHunger() - 1));
+					petLiveData.setValue(pet);
+				}
 				hunger_loop_tracker = 0;
-				petLiveData.setValue(pet);
 			}
 
-			if(happiness_loop_tracker == 23000)
-			{
+			if (happiness_loop_tracker == 23000) {
 				Pet pet = petLiveData.getValue();
-				pet.setHappiness((pet.getHappiness()-1));
+				if (pet.getHappiness() > 0) {
+					pet.setHappiness((pet.getHappiness() - 1));
+					petLiveData.setValue(pet);
+				}
 				happiness_loop_tracker = 0;
-				petLiveData.setValue(pet);
 			}
 
 			//Loop trackers
