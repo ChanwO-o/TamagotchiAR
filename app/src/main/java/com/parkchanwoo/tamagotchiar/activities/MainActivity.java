@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-
 		ImageView feedButton = findViewById(R.id.Feed_ImageView);
 		ImageView playButton = findViewById(R.id.Play_ImageView);
 		ImageView bathroomButton = findViewById(R.id.Bathroom_ImageView);
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 		dialogNewPet.setTitle("New Pet information");
 		dialogNewPet.setCancelable(false);
 		LayoutInflater inflater = this.getLayoutInflater();
-		View dialogLayout = inflater.inflate(R.layout.fragment_petinfo, null);
+		View dialogLayout = inflater.inflate(R.layout.layout_petinfo, null);
 		dialogNewPet.setView(dialogLayout);
 		EditText etName = dialogLayout.findViewById(R.id.etPetInfoName);
 		DatePicker dpDOB = dialogLayout.findViewById(R.id.dpPetInfoDOB);
