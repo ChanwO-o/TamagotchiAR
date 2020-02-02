@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".fragments.StatusBarsFragment">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<ProgressBar
+			android:id="@+id/HungerBar_ProgBar"
+			style="@android:style/Widget.ProgressBar.Horizontal"
+			android:layout_width="400dp"
+			android:layout_height="10dp"
+			android:progress="25"
+			android:progressTint="@color/hungerColor"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_bias=".7" />
+
+		<ProgressBar
+			android:id="@+id/HappinessBar_ProgBar"
+			style="@android:style/Widget.ProgressBar.Horizontal"
+			android:layout_width="400dp"
+			android:layout_height="10dp"
+			android:progress="25"
+			android:progressTint="@color/happinessColor"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_bias=".35" />
+
+		<ProgressBar
+			android:id="@+id/BathroomBar_ProgBar"
+			style="@android:style/Widget.ProgressBar.Horizontal"
+			android:layout_width="400dp"
+			android:layout_height="10dp"
+			android:progress="25"
+			android:progressTint="@color/bathroomColor"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.454"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_bias="0.02" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

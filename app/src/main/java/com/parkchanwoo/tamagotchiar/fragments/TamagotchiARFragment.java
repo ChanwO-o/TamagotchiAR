@@ -1,10 +1,11 @@
-package com.parkchanwoo.tamagotchiar;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.parkchanwoo.tamagotchiar.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
@@ -13,23 +14,29 @@ import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
+import com.parkchanwoo.tamagotchiar.R;
+import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class TamagotchiARFragment extends ArFragment {
 	private String TAG = this.getClass().getSimpleName();
-
-	private ArFragment arFragment;
+	private MainActivityViewModel mainActivityViewModel;
 	private ModelRenderable androidRenderable;
+	private boolean petCreated = false;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+	}
 
-		arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ar_fragment); //Find the fragment, using fragment manager
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		mainActivityViewModel = ViewModelProviders.of(getActivity()).get(MainActivityViewModel.class);
+		Log.i(TAG, "onActivityCreated()");
 
 		//Build the ModelRenderable
 		ModelRenderable.builder()
-				.setSource(this, R.raw.android_logo)
+				.setSource(getContext(), R.raw.dog1)
 				.build()
 				.thenAccept(renderable -> androidRenderable = renderable)
 				.exceptionally(
@@ -39,20 +46,21 @@ public class MainActivity extends AppCompatActivity {
 						});
 
 		//Listen for onTap events
-		arFragment.setOnTapArPlaneListener(
+		setOnTapArPlaneListener(
 				(HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
-					if (androidRenderable == null)
+					if (androidRenderable == null || petCreated)
 						return;
 					Anchor anchor = hitResult.createAnchor();
 					AnchorNode anchorNode = new AnchorNode(anchor); //Build a node of type AnchorNode
-					anchorNode.setParent(arFragment.getArSceneView().getScene()); //Connect the AnchorNode to the Scene
-					TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem()); //Build a node of type TransformableNode
+					anchorNode.setParent(getArSceneView().getScene()); //Connect the AnchorNode to the Scene
+					TransformableNode transformableNode = new TransformableNode(getTransformationSystem()); //Build a node of type TransformableNode
 					transformableNode.setParent(anchorNode); //Connect the TransformableNode to the AnchorNode
 					transformableNode.setRenderable(androidRenderable); //Attach the Renderable
 					transformableNode.select(); //Set the node
+					transformableNode.getScaleController().setMinScale(0.2f);
+					transformableNode.getScaleController().setMaxScale(0.5f);
+					petCreated = true; // prevent user from creating multiple pets
 				}
 		);
-
-
 	}
 }

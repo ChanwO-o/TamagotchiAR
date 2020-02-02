@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	tools:context=".fragments.PetInfoFragment">
+
+	<TextView
+		android:id="@+id/tvPetInfoName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Name"
+		android:textSize="18sp" />
+
+	<EditText
+		android:id="@+id/etPetInfoName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/tvPetInfoName"
+		android:autofillHints=""
+		android:ems="10"
+		android:inputType="textPersonName" />
+
+	<TextView
+		android:id="@+id/tvPetInfoDOB"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/etPetInfoName"
+		android:layout_marginBottom="10dp"
+		android:text="Date of Birth"
+		android:textSize="18sp" />
+
+	<DatePicker
+		android:id="@+id/dpPetInfoDOB"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/tvPetInfoDOB"
+		android:calendarViewShown="false"
+		android:datePickerMode="spinner" />
+
+	<RadioGroup
+		android:id="@+id/rgPetInfoGender"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/dpPetInfoDOB">
+
+		<RadioButton
+			android:id="@+id/rbPetInfoMale"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"
+			android:checked="true"
+			android:text="Male" />
+
+		<RadioButton
+			android:id="@+id/rbPetInfoFemale"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"
+			android:text="Female" />
+	</RadioGroup>
+
+<!--	<Button-->
+<!--		android:id="@+id/bPetInfoCreatePet"-->
+<!--		android:layout_width="wrap_content"-->
+<!--		android:layout_height="wrap_content"-->
+<!--		android:layout_below="@id/rgPetInfoGender"-->
+<!--		android:text="Start" />-->
+
+</RelativeLayout>
