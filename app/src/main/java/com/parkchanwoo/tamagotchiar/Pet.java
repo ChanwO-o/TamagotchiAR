@@ -1,4 +1,5 @@
 package com.parkchanwoo.tamagotchiar;
+import java.io.Serializable;
 import java.util.*;
 /*
 GOALS:
@@ -9,7 +10,7 @@ GOALS:
 
 
 
-public class Pet
+public class Pet implements Serializable
 {
 
 	private String name;
@@ -73,4 +74,8 @@ public class Pet
 		this.bathroom = bathroom;
 	}
 
+	@Override
+	public String toString() {
+		return "Name: " + name + " birthday: " + birthday + " gender: " + gender + " happiness: " + happiness + " hunger: " + hunger + " bathroom: " + bathroom;
+	}
 }
