@@ -8,22 +8,30 @@
 	tools:context=".MainActivity">
 
 	<fragment
-		android:id="@+id/tamagotchi_ar_fragment"
-		android:name="com.parkchanwoo.tamagotchiar.fragments.TamagotchiARFragment"
+		android:id="@+id/start_fragment"
+		android:name="com.parkchanwoo.tamagotchiar.fragments.StartFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
-	<fragment
-		android:id="@+id/main_buttons_fragment"
-		android:name="com.parkchanwoo.tamagotchiar.fragments.MainButtonsFragment"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintTop_toTopOf="@+id/tamagotchi_ar_fragment"
-		app:layout_constraintVertical_bias="0.95"
-		tools:layout_editor_absoluteX="0dp" />
+<!--	<fragment-->
+<!--		android:id="@+id/tamagotchi_ar_fragment"-->
+<!--		android:name="com.parkchanwoo.tamagotchiar.fragments.TamagotchiARFragment"-->
+<!--		android:layout_width="match_parent"-->
+<!--		android:layout_height="match_parent"-->
+<!--		app:layout_constraintEnd_toEndOf="parent"-->
+<!--		app:layout_constraintStart_toStartOf="parent"-->
+<!--		app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--	<fragment-->
+<!--		android:id="@+id/main_buttons_fragment"-->
+<!--		android:name="com.parkchanwoo.tamagotchiar.fragments.MainButtonsFragment"-->
+<!--		android:layout_width="match_parent"-->
+<!--		android:layout_height="wrap_content"-->
+<!--		app:layout_constraintBottom_toBottomOf="parent"-->
+<!--		app:layout_constraintTop_toTopOf="@+id/tamagotchi_ar_fragment"-->
+<!--		app:layout_constraintVertical_bias="0.95"-->
+<!--		tools:layout_editor_absoluteX="0dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
