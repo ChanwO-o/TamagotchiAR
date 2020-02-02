@@ -37,6 +37,8 @@ public class FileRepository {
 	}
 
 	public void setPetLiveData(Pet pet) {
+		if (petLiveData == null)
+			getPetLiveData(); // initialize
 		petLiveData.setValue(pet);
 	}
 
