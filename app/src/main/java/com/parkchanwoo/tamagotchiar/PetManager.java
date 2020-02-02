@@ -42,16 +42,16 @@ public class PetManager {
 
 		@Override
 		public void run() {
-			currentTime += .0155;
+			currentTime += .0115;
 			Log.d("test", String.valueOf(currentTime));
 			handler.postDelayed(this, 0);
 
-			if(currentTime >= 12000){
+			if(currentTime >= 120000){
 				currentTime = 0.0;
 				day += 1;
 			}
 
-			if(bathroom_loop_tracker == 390)
+			if(bathroom_loop_tracker == 8000)
 			{
 				Pet pet = petLiveData.getValue();
 				pet.setBathroom(pet.getBathroom()-1);
@@ -59,7 +59,7 @@ public class PetManager {
 				petLiveData.setValue(pet);
 			}
 
-			if(hunger_loop_tracker == 780)
+			if(hunger_loop_tracker == 13000)
 			{
 				Pet pet = petLiveData.getValue();
 				pet.setHunger((pet.getHunger()-1));
@@ -67,7 +67,7 @@ public class PetManager {
 				petLiveData.setValue(pet);
 			}
 
-			if(happiness_loop_tracker == 1560)
+			if(happiness_loop_tracker == 23000)
 			{
 				Pet pet = petLiveData.getValue();
 				pet.setHappiness((pet.getHappiness()-1));
