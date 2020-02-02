@@ -35,7 +35,7 @@ public class TamagotchiARFragment extends ArFragment {
 
 		//Build the ModelRenderable
 		ModelRenderable.builder()
-				.setSource(getContext(), R.raw.android_logo)
+				.setSource(getContext(), R.raw.dog1)
 				.build()
 				.thenAccept(renderable -> androidRenderable = renderable)
 				.exceptionally(
