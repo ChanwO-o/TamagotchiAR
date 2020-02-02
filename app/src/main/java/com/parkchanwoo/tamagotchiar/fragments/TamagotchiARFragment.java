@@ -21,6 +21,7 @@ public class TamagotchiARFragment extends ArFragment {
 	private String TAG = this.getClass().getSimpleName();
 	private MainActivityViewModel mainActivityViewModel;
 	private ModelRenderable androidRenderable;
+	private boolean petCreated = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class TamagotchiARFragment extends ArFragment {
 		//Listen for onTap events
 		setOnTapArPlaneListener(
 				(HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
-					if (androidRenderable == null)
+					if (androidRenderable == null || petCreated)
 						return;
 					Anchor anchor = hitResult.createAnchor();
 					AnchorNode anchorNode = new AnchorNode(anchor); //Build a node of type AnchorNode
@@ -56,6 +57,9 @@ public class TamagotchiARFragment extends ArFragment {
 					transformableNode.setParent(anchorNode); //Connect the TransformableNode to the AnchorNode
 					transformableNode.setRenderable(androidRenderable); //Attach the Renderable
 					transformableNode.select(); //Set the node
+					transformableNode.getScaleController().setMinScale(0.2f);
+					transformableNode.getScaleController().setMaxScale(0.5f);
+					petCreated = true; // prevent user from creating multiple pets
 				}
 		);
 	}
