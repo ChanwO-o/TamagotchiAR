@@ -22,12 +22,21 @@ public class FileRepository {
 	private Context appContext;
 	private MutableLiveData<Pet> petLiveData;
 
-
 	public FileRepository(Context context) {
 		appContext = context.getApplicationContext();
 	}
 
-	public LiveData<Pet> parsePet() {
+	public LiveData<Pet> getPetLiveData() {
+		if (petLiveData == null) {
+			petLiveData = parsePet();
+		}
+		if (petLiveData == null) { // still null
+			petLiveData = new MutableLiveData<>();
+		}
+		return petLiveData;
+	}
+
+	public MutableLiveData<Pet> parsePet() {
 		String name = "";
 		String dob = "";
 		String gender = "";
