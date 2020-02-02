@@ -26,7 +26,7 @@ public class PetInfoFragment extends Fragment {
 	private EditText etPetInfoName;
 	private DatePicker dpPetInfoDOB;
 	private RadioButton rbPetInfoMale, rbPetInfoFemale;
-	private Button bPetInfoCreatePet;
+//	private Button bPetInfoCreatePet;
 
 	public PetInfoFragment() {
 
@@ -41,14 +41,23 @@ public class PetInfoFragment extends Fragment {
 		dpPetInfoDOB = v.findViewById(R.id.dpPetInfoDOB);
 		rbPetInfoMale = v.findViewById(R.id.rbPetInfoMale);
 		rbPetInfoFemale = v.findViewById(R.id.rbPetInfoFemale);
-		bPetInfoCreatePet = v.findViewById(R.id.bPetInfoCreatePet);
-		bPetInfoCreatePet.setOnClickListener(view -> {
-			if (etPetInfoName.getText().toString().isEmpty())
-				etPetInfoName.setError("Required");
-			else
-				createPet();
+//		bPetInfoCreatePet = v.findViewById(R.id.bPetInfoCreatePet);
+//		bPetInfoCreatePet.setOnClickListener(view -> {
+//			if (etPetInfoName.getText().toString().isEmpty())
+//				etPetInfoName.setError("Required");
+//			else {
+//				createPet();
+//				Fragment petInfoFragment = getActivity().getSupportFragmentManager().findFragmentByTag("PetInfoFragment");
+//				getActivity().getSupportFragmentManager().beginTransaction()
+//						.remove(petInfoFragment)
+//						.add(new TamagotchiARFragment(), "TamagotchiARFragment")
+//						.commit();
 
-		});
+//				getActivity().getSupportFragmentManager().beginTransaction()
+//						.add(R.id.flMainFragments, new PetInfoFragment(), "PetInfoFragment")
+//						.commit();
+//			}
+//		});
 		return v;
 	}
 
@@ -67,7 +76,8 @@ public class PetInfoFragment extends Fragment {
 		else
 			gender = "female";
 		Log.d("petdob", "" + dob);
-		Pet pet = new Pet(name, new Date(dob), gender);
+//		Pet pet = new Pet(name, new Date(dob), gender);
+		Pet pet = new Pet("My Pet", new Date(2020, 1, 31), "Male");
 		mainActivityViewModel.setPetLiveData(pet);
 	}
 }
