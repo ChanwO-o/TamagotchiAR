@@ -1,6 +1,7 @@
 package com.parkchanwoo.tamagotchiar.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -77,8 +78,22 @@ public class TamagotchiARFragment extends ArFragment {
 
 	private void confetti() {
 		TransformableNode confettiNode = new TransformableNode(getTransformationSystem());
-		confettiNode.setLocalScale(new Vector3(0.1f, 0.1f, 0.1f));
+		confettiNode.setLocalScale(new Vector3(0.01f, 0.01f, 0.01f));
 		confettiNode.setParent(anchorNode);
 		confettiNode.setRenderable(confettiRenderable);
+
+		Handler handler = new Handler();
+		final int[] iterations = {100};
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				Vector3 newScale = Vector3.add(confettiNode.getLocalScale(), new Vector3(0.01f, 0.01f, 0.01f));
+				confettiNode.setLocalScale(newScale);
+				if (iterations[0] > 0) {
+					handler.postDelayed(this, 100);
+					iterations[0]--;
+				}
+			}
+		}, 1500);
 	}
 }

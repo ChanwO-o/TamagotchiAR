@@ -11,7 +11,7 @@ public class RenderableFactory {
 	public CompletableFuture<ModelRenderable> buildRenderable(Context context, int resource) {
 		//Build the ModelRenderable
 		return ModelRenderable.builder()
-				.setSource(context, R.raw.dog1)
+				.setSource(context, resource)
 				.build();
 	}
 }
