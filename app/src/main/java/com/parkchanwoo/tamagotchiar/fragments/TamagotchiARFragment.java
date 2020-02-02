@@ -57,8 +57,8 @@ public class TamagotchiARFragment extends ArFragment {
 					transformableNode.setParent(anchorNode); //Connect the TransformableNode to the AnchorNode
 					transformableNode.setRenderable(androidRenderable); //Attach the Renderable
 					transformableNode.select(); //Set the node
-					transformableNode.getScaleController().setMinScale(0.2f);
-					transformableNode.getScaleController().setMaxScale(0.5f);
+					transformableNode.getScaleController().setMinScale(0.30f);
+					transformableNode.getScaleController().setMaxScale(0.35f);
 					petCreated = true; // prevent user from creating multiple pets
 				}
 		);
