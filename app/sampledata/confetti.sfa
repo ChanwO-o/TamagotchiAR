@@ -1,23 +1,18 @@
 {
   animations: [
     {
-      clips: [
-        {
-          name: 'Main',
-        },
-      ],
-      path: 'sampledata/android_logo.fbx',
+      path: 'sampledata/confetti.fbx',
     },
   ],
   materials: [
     {
-      name: 'Body',
+      name: 'material_2___32151',
       parameters: [
         {
           baseColor: [
-            0.50666699999999998,
-            1,
-            0.20000000000000001,
+            0.403922,
+            0.22745099999999999,
+            0.71764700000000003,
             1,
           ],
         },
@@ -49,13 +44,13 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: 'Luminace',
+      name: 'material_8___32151',
       parameters: [
         {
           baseColor: [
-            0,
-            0,
-            0,
+            0.95686300000000002,
+            0.26274500000000001,
+            0.21176500000000001,
             1,
           ],
         },
@@ -87,13 +82,13 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: 'Eyes',
+      name: 'material_11___32151',
       parameters: [
         {
           baseColor: [
-            1,
-            0.98999999999999999,
-            0.98999999999999999,
+            0,
+            0.58823499999999995,
+            0.53333299999999995,
             1,
           ],
         },
@@ -125,13 +120,51 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: 'Bg',
+      name: 'material_5___32151',
+      parameters: [
+        {
+          baseColor: [
+            0.011764999999999999,
+            0.60784300000000002,
+            0.89803900000000003,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'material_12___32151',
       parameters: [
         {
           baseColor: [
             1,
-            0.98999999999999999,
-            0.98999999999999999,
+            0.92156899999999997,
+            0.231373,
             1,
           ],
         },
@@ -166,16 +199,14 @@
   model: {
     attributes: [
       'Position',
-      'TexCoord',
       'Orientation',
       'BoneIndices',
       'BoneWeights',
     ],
     collision: {},
-    file: 'sampledata/android_logo.fbx',
-    name: 'android_logo',
+    file: 'sampledata/confetti.fbx',
+    name: 'confetti',
     recenter: 'root',
-    scale: 0.024316999999999998,
   },
   version: '0.54:2',
 }
