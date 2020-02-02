@@ -3,4 +3,7 @@
 	<color name="colorPrimary">#008577</color>
 	<color name="colorPrimaryDark">#00574B</color>
 	<color name="colorAccent">#D81B60</color>
+	<color name="hungerColor">#FF462C</color>
+	<color name="happinessColor">#FFEC2C</color>
+	<color name="bathroomColor">#33C7FF</color>
 </resources>
