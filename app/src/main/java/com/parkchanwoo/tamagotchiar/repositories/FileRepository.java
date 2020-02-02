@@ -3,31 +3,69 @@ package com.parkchanwoo.tamagotchiar.repositories;
 import android.content.Context;
 import android.util.Log;
 
+import com.parkchanwoo.tamagotchiar.Pet;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Date;
 
 
 public class FileRepository {
 	private String TAG = this.getClass().getSimpleName();
 	private Context appContext;
+
 	/**
 	 FileRepository fileHelper;
 	 fileHelper = new FileRepository(Activity.this);
 	 String data = fileHelper.resetInfo();
 	 */
+
 	public FileRepository(Context context) {
 		appContext = context.getApplicationContext();
 	}
-	/**
-	 * @param String data.
-	 * @return Nothing.
-	 * @exception IOException On input error.
-	 * @see IOException
-	 */
+
+	public Pet parsePet() {
+		String name = "";
+		String dob = "";
+		String gender = "";
+		try {
+			InputStream inputStream = appContext.openFileInput("data.txt");
+
+			if ( inputStream != null ) {
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+				String currentLine;
+
+				while ( (currentLine = bufferedReader.readLine()) != null ) {
+					if(currentLine.startsWith("name"))
+						name = currentLine.replace("name" + ": ", "");
+					if(currentLine.startsWith("dob"))
+						dob = currentLine.replace("dob" + ": ", "");
+					if(currentLine.startsWith("gender"))
+						gender = currentLine.replace("gender" + ": ", "");
+				}
+
+				inputStream.close();
+			}
+		}
+		catch (FileNotFoundException e) {
+			Log.e("login activity", "File not found: " + e.toString());
+		} catch (IOException e) {
+			Log.e("login activity", "Can not read file: " + e.toString());
+		}
+
+		Date date = new Date(Integer.parseInt(dob.substring(4,6)), Integer.parseInt(dob.substring(2,4)), Integer.parseInt(dob.substring(0,2)));
+
+		Pet pet = new Pet(name, date, gender);
+
+		Log.d("pet", String.valueOf(pet.getGender()));
+
+		return pet;
+	}
+
 	public void writeToFile(String data) {
 		try {
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(appContext.openFileOutput("data.txt", Context.MODE_PRIVATE));
@@ -38,12 +76,7 @@ public class FileRepository {
 			Log.e("Exception", "File write failed: " + e.toString());
 		}
 	}
-	/**
-	 * @param no input.
-	 * @return string.
-	 * @exception IOException On input error.
-	 * @see IOException
-	 */
+
 	public String readFromFile() {
 		String ret = "";
 		try {
@@ -68,12 +101,7 @@ public class FileRepository {
 		}
 		return ret;
 	}
-	/**
-	 * @param String key.
-	 * @return string.
-	 * @exception IOException On input error.
-	 * @see IOException
-	 */
+
 	public String getInfo(String key) {
 		String ret = "";
 		key = key.toLowerCase();
@@ -207,5 +235,3 @@ public class FileRepository {
 		return fatoryData;
 	}
 }
-
-
