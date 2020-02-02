@@ -12,11 +12,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.parkchanwoo.tamagotchiar.Pet;
 import com.parkchanwoo.tamagotchiar.PetManager;
 import com.parkchanwoo.tamagotchiar.R;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 import java.util.Date;
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 			buildNewPetDialog();
 		}
 		else {
+			DynamicToast.makeSuccess(this, "Scan and Tap the grid to see your pet!", Toast.LENGTH_LONG).show();
 			petManager.startTimer();
 		}
 
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 				gender = "Female";
 			Pet pet = new Pet(name, dob, gender);
 			mainActivityViewModel.setPetLiveData(pet);
+			DynamicToast.makeSuccess(this, "Scan and Tap the grid to see your pet!", Toast.LENGTH_LONG).show();
 			petManager.startTimer();
 		});
 		dialogNewPet.show();
