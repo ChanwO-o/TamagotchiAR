@@ -42,9 +42,9 @@ public class StartFragment extends Fragment {
 			ivLogo.setVisibility(View.GONE);
 			ibStart.setVisibility(View.GONE);
 
-			getActivity().getSupportFragmentManager().beginTransaction()
-					.add(R.id.flMainFragments, new PetInfoFragment(), "PetInfoFragment")
-					.commit();
+//			getActivity().getSupportFragmentManager().beginTransaction()
+//					.add(R.id.flMainFragments, new PetInfoFragment(), "PetInfoFragment")
+//					.commit();
 		});
 	}
 }

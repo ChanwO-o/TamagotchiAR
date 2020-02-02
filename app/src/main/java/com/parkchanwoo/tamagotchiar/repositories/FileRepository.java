@@ -28,7 +28,7 @@ public class FileRepository {
 
 	public LiveData<Pet> getPetLiveData() {
 		if (petLiveData == null) {
-			petLiveData = parsePet();
+//			petLiveData = parsePet();
 		}
 		if (petLiveData == null) { // still null
 			petLiveData = new MutableLiveData<>();
