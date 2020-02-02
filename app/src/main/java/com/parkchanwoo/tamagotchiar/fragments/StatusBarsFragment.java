@@ -1,5 +1,6 @@
 package com.parkchanwoo.tamagotchiar.fragments;
 
+import android.app.ActivityManager;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -12,10 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.parkchanwoo.tamagotchiar.Pet;
 import com.parkchanwoo.tamagotchiar.R;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
+
+import static android.content.Context.ACTIVITY_SERVICE;
 
 public class StatusBarsFragment extends Fragment {
 	private String TAG = this.getClass().getSimpleName();
@@ -50,6 +55,13 @@ public class StatusBarsFragment extends Fragment {
 			hungerBar.setProgress(pet.getHunger());
 			happinessBar.setProgress(pet.getHappiness());
 			bathroomBar.setProgress(pet.getBathroom());
+
+			if (pet.getHunger() == 0 && pet.getHappiness() == 0 && pet.getBathroom() == 0) {
+				DynamicToast.makeError(getContext(), "Your pet has died!", Toast.LENGTH_LONG).show();
+				((ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE)).clearApplicationUserData();
+				getActivity().finish();
+			}
+
 		});
 	}
 }
