@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 
 import com.parkchanwoo.tamagotchiar.R;
+import com.parkchanwoo.tamagotchiar.fragments.StatusBarsFragment;
 import com.parkchanwoo.tamagotchiar.viewmodels.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
