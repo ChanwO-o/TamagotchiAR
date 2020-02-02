@@ -35,7 +35,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="172dp"
-		android:text="@string/start"
+		android:text="Start"
 		app:layout_constraintEnd_toEndOf="@+id/txt_dob"
 		app:layout_constraintHorizontal_bias="0.504"
 		app:layout_constraintStart_toStartOf="@+id/txt_dob"
@@ -81,7 +81,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="9dp"
-		android:text="@string/name"
+		android:text="Name"
 		android:textSize="18sp"
 		app:layout_constraintBottom_toTopOf="@+id/txt_name"
 		app:layout_constraintStart_toStartOf="@+id/txt_name" />
