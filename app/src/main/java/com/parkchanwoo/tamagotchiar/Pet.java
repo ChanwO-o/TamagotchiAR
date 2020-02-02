@@ -7,8 +7,11 @@ GOALS:
 	[] Sickness & Discipline
  */
 
+
+
 public class Pet
 {
+
 	private String name;
 	private Date birthday;
 	private String gender;
