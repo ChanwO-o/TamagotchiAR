@@ -1,4 +1,4 @@
-package com.parkchanwoo.tamagotchiar;
+package com.parkchanwoo.tamagotchiar.fragments;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.parkchanwoo.tamagotchiar.R;
 
 public class StatusBarsFragment extends Fragment {
 		// Required empty public constructor
