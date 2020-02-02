@@ -3,6 +3,9 @@ package com.parkchanwoo.tamagotchiar.repositories;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.parkchanwoo.tamagotchiar.Pet;
 
 import java.io.BufferedReader;
@@ -17,18 +20,14 @@ import java.util.Date;
 public class FileRepository {
 	private String TAG = this.getClass().getSimpleName();
 	private Context appContext;
+	private MutableLiveData<Pet> petLiveData;
 
-	/**
-	 FileRepository fileHelper;
-	 fileHelper = new FileRepository(Activity.this);
-	 String data = fileHelper.resetInfo();
-	 */
 
 	public FileRepository(Context context) {
 		appContext = context.getApplicationContext();
 	}
 
-	public Pet parsePet() {
+	public LiveData<Pet> parsePet() {
 		String name = "";
 		String dob = "";
 		String gender = "";
@@ -63,7 +62,9 @@ public class FileRepository {
 
 		Log.d("pet", String.valueOf(pet.getGender()));
 
-		return pet;
+		MutableLiveData<Pet> petLiveData = new MutableLiveData<>();
+		petLiveData.setValue(pet);
+		return petLiveData;
 	}
 
 	public void writeToFile(String data) {
