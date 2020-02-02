@@ -5,7 +5,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
+import com.parkchanwoo.tamagotchiar.Pet;
 import com.parkchanwoo.tamagotchiar.repositories.FileRepository;
 
 public class MainActivityViewModel extends AndroidViewModel {
@@ -21,5 +23,9 @@ public class MainActivityViewModel extends AndroidViewModel {
 	protected void onCleared() {
 		super.onCleared();
 		Log.i(TAG, "MainActivityViewModel destroyed");
+	}
+
+	public LiveData<Pet> getPetLiveData() {
+		return fileRepository.getPetLiveData();
 	}
 }
