@@ -21,7 +21,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintVertical_bias="1" />
+			app:layout_constraintVertical_bias=".7" />
 
 		<ProgressBar
 			android:id="@+id/HappinessBar_ProgBar"
@@ -34,7 +34,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintVertical_bias=".5" />
+			app:layout_constraintVertical_bias=".35" />
 
 		<ProgressBar
 			android:id="@+id/BathroomBar_ProgBar"

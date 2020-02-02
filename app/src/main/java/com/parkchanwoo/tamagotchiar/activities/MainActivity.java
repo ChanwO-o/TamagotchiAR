@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
 import com.parkchanwoo.tamagotchiar.Pet;
@@ -27,6 +29,36 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+
+		ImageView feedButton = findViewById(R.id.Feed_ImageView);
+		ImageView playButton = findViewById(R.id.Play_ImageView);
+		ImageView bathroomButton = findViewById(R.id.Bathroom_ImageView);
+		ProgressBar hungerBar = findViewById(R.id.HungerBar_ProgBar);
+		ProgressBar happinessBar = findViewById(R.id.HappinessBar_ProgBar);
+		ProgressBar bathroomBar = findViewById(R.id.BathroomBar_ProgBar);
+
+
+		feedButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				hungerBar.setProgress(hungerBar.getProgress() + 15);
+			}
+		});
+
+		playButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				happinessBar.setProgress(happinessBar.getProgress() + 15);
+			}
+		});
+
+		bathroomButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				bathroomBar.setProgress(bathroomBar.getProgress() + 15);
+			}
+		});
 
 		mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 		if (mainActivityViewModel.getPetLiveData().getValue() == null) { // no saved pet
