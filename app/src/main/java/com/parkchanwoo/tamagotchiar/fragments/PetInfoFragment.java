@@ -1,10 +1,12 @@
 package com.parkchanwoo.tamagotchiar.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -21,7 +23,8 @@ import java.util.Date;
 public class PetInfoFragment extends Fragment {
 	private String TAG = this.getClass().getSimpleName();
 	private MainActivityViewModel mainActivityViewModel;
-	private EditText etPetInfoName, etPetInfoDOB;
+	private EditText etPetInfoName;
+	private DatePicker dpPetInfoDOB;
 	private RadioButton rbPetInfoMale, rbPetInfoFemale;
 	private Button bPetInfoCreatePet;
 
@@ -35,12 +38,13 @@ public class PetInfoFragment extends Fragment {
 		// Inflate the layout for this fragment
 		View v = inflater.inflate(R.layout.fragment_petinfo, container, false);
 		etPetInfoName = v.findViewById(R.id.etPetInfoName);
-		etPetInfoDOB = v.findViewById(R.id.etPetInfoDOB);
+		dpPetInfoDOB = v.findViewById(R.id.dpPetInfoDOB);
 		rbPetInfoMale = v.findViewById(R.id.rbPetInfoMale);
 		rbPetInfoFemale = v.findViewById(R.id.rbPetInfoFemale);
 		bPetInfoCreatePet = v.findViewById(R.id.bPetInfoCreatePet);
 		bPetInfoCreatePet.setOnClickListener(view -> {
 			createPet();
+
 		});
 		return v;
 	}
@@ -53,12 +57,13 @@ public class PetInfoFragment extends Fragment {
 
 	private void createPet() {
 		String name = etPetInfoName.getText().toString();
-		String dob = etPetInfoDOB.getText().toString();
+		String dob = dpPetInfoDOB.getDayOfMonth() + "/" + (dpPetInfoDOB.getMonth() + 1) + "/" + dpPetInfoDOB.getYear();
 		String gender;
 		if (rbPetInfoMale.isChecked())
 			gender = "male";
 		else
 			gender = "female";
+		Log.d("petdob", "" + dob);
 		Pet pet = new Pet(name, new Date(dob), gender);
 		mainActivityViewModel.setPetLiveData(pet);
 	}

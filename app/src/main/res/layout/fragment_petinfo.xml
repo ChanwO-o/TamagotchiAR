@@ -1,72 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:gravity="center"
 	tools:context=".fragments.PetInfoFragment">
 
 	<TextView
 		android:id="@+id/tvPetInfoName"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="9dp"
 		android:text="Name"
-		android:textSize="18sp"
-		app:layout_constraintBottom_toTopOf="@+id/etPetInfoName"
-		app:layout_constraintStart_toStartOf="@+id/etPetInfoName" />
+		android:textSize="18sp" />
 
 	<EditText
 		android:id="@+id/etPetInfoName"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="64dp"
+		android:layout_below="@id/tvPetInfoName"
 		android:autofillHints=""
 		android:ems="10"
-		android:inputType="textPersonName"
-		app:layout_constraintBottom_toTopOf="@+id/etPetInfoDOB"
-		app:layout_constraintStart_toStartOf="@+id/etPetInfoDOB" />
+		android:inputType="textPersonName" />
 
 	<TextView
 		android:id="@+id/tvPetInfoDOB"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_below="@id/etPetInfoName"
 		android:layout_marginBottom="10dp"
 		android:text="Date of Birth"
-		android:textSize="18sp"
-		app:layout_constraintBottom_toTopOf="@+id/etPetInfoDOB"
-		app:layout_constraintStart_toStartOf="@+id/etPetInfoDOB" />
+		android:textSize="18sp" />
 
-	<EditText
-		android:id="@+id/etPetInfoDOB"
+	<DatePicker
+		android:id="@+id/dpPetInfoDOB"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="88dp"
-		android:layout_marginLeft="88dp"
-		android:layout_marginTop="246dp"
-		android:autofillHints=""
-		android:ems="10"
-		android:inputType="date"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		android:layout_below="@id/tvPetInfoDOB"
+		android:calendarViewShown="false"
+		android:datePickerMode="spinner" />
 
 	<RadioGroup
 		android:id="@+id/rgPetInfoGender"
-		android:layout_width="198dp"
-		android:layout_height="144dp"
-		android:layout_marginStart="96dp"
-		android:layout_marginLeft="96dp"
-		android:layout_marginTop="308dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent">
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/dpPetInfoDOB">
 
 		<RadioButton
 			android:id="@+id/rbPetInfoMale"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
 			android:layout_weight="1"
-			android:text="Male"
-			android:checked="true"/>
+			android:checked="true"
+			android:text="Male" />
 
 		<RadioButton
 			android:id="@+id/rbPetInfoFemale"
@@ -80,11 +66,7 @@
 		android:id="@+id/bPetInfoCreatePet"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="172dp"
-		android:text="Start"
-		app:layout_constraintEnd_toEndOf="@+id/etPetInfoDOB"
-		app:layout_constraintHorizontal_bias="0.504"
-		app:layout_constraintStart_toStartOf="@+id/etPetInfoDOB"
-		app:layout_constraintTop_toBottomOf="@+id/etPetInfoDOB" />
+		android:layout_below="@id/rgPetInfoGender"
+		android:text="Start" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
