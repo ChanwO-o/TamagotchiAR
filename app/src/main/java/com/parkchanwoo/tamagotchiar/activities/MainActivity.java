@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -43,37 +42,6 @@ public class MainActivity extends AppCompatActivity {
 			DynamicToast.makeSuccess(this, "Scan and Tap the grid to see your pet!", Toast.LENGTH_LONG).show();
 			petManager.startTimer();
 		}
-
-		ImageView feedButton = findViewById(R.id.Feed_ImageView);
-		ImageView playButton = findViewById(R.id.Play_ImageView);
-		ImageView bathroomButton = findViewById(R.id.Bathroom_ImageView);
-
-		feedButton.setOnClickListener(v -> {
-			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
-			if (pet.getHunger() + 15 > 100)
-				pet.setHunger(100);
-			else
-				pet.setHunger(pet.getHunger() + 15);
-			mainActivityViewModel.setPetLiveData(pet);
-		});
-
-		playButton.setOnClickListener(v -> {
-			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
-			if (pet.getHappiness() + 7 > 100)
-				pet.setHappiness(100);
-			else
-				pet.setHappiness(pet.getHappiness() + 7);
-			mainActivityViewModel.setPetLiveData(pet);
-		});
-
-		bathroomButton.setOnClickListener(v -> {
-			Pet pet = mainActivityViewModel.getPetLiveData().getValue();
-			if (pet.getBathroom() + 7 > 100)
-				pet.setBathroom(100);
-			else
-				pet.setBathroom(pet.getBathroom() + 7);
-			mainActivityViewModel.setPetLiveData(pet);
-		});
 	}
 
 	@Override
