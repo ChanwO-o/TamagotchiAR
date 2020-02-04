@@ -1,5 +1,6 @@
-# TamagotchiAR
+# TamagotchiAR 🥚🐣
 ###### Created @ HackUCI 2020
+[View on Devpost](https://devpost.com/software/tamagotchiar "TamagotchiAR Devpost")
 
 TamagotchiAR is a remake of the classic Tamagotchi game that we all played back in the day as young children.
 Render your pet into the real world for deeper interaction!
